@@ -1,15 +1,12 @@
-// src/components/Card.jsx
-import React from 'react';
 
-// IMPORTAÇÃO DE IMAGENS (Ajuste o caminho para a sua pasta de imagens)
-// Você deve importar todas as suas imagens aqui!
-import cosmosSentinel from '../imagens/cosmos-sentinel.png'; 
-import nebuladragon from '../imagens/nebuladragon.png';
-import cyberbladePaladin from '../imagens/cyberblade-paladin.png';
-import mechadragon from '../imagens/mechadragon.png';
-import archmage from '../imagens/archmage.png';
-import aegisKnight from '../imagens/aegis-knight.png';
-import stormbringer from '../imagens/stormbringer.png';
+import React from 'react';
+import cosmosSentinel from '../assets/cosmos-sentinel.png'; 
+import nebuladragon from '../assets/nebuladragon.png';
+import cyberbladePaladin from '../assets/cyberblade-paladin.png';
+import mechadragon from '../assets/mechadragon.png';
+import archmage from '../assets/archmage.png';
+import aegisKnight from '../assets/aegis-knight.png';
+import stormbringer from '../assets/stormbringer.png';
 
 // Mapeamento de nome de arquivo para a variável importada.
 const cardImages = {
