@@ -1,4 +1,3 @@
-// src/App.jsx
 
 // Importe TODOS os seus arquivos CSS globais aqui e na ORDEM correta:
 import './css/reset.css';      // 1. Reset (Remove margens padrão)
@@ -11,7 +10,6 @@ import Slider from './components/Slider';
 
 function App() {
   return (
-    // O retorno do componente (Seus elementos estruturais)
     <> 
       <Header />
       <Slider /> 
