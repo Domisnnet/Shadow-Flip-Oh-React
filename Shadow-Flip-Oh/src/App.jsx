@@ -10,11 +10,11 @@ import Slider from './components/Slider';
 
 function App() {
   return (
-    <> 
+    <div className="container-principal"> 
       <Header />
       <Slider /> 
-    </>
+    </div>
   )
 }
 
-export default App
+export default App;
