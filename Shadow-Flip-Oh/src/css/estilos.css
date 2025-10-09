@@ -76,6 +76,7 @@ body {
 	background: radial-gradient(circle, #f3e2c8, #e4cfa5, #c4a57a);
 	border: 2px solid #a67c52;
 	border-radius: 8px;
+	color: #000000;
 }
 
 .cartao .estrela {
