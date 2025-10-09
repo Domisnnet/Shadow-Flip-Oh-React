@@ -4,7 +4,7 @@ export const cardsData = [
         id: 1,
         nome: "Cosmos Sentinel, o Guardião Galáctico",
         fundo: "fundo-1",
-        nivel: 5, // Número de estrelas
+        nivel: 5, 
         imagem: "cosmos-sentinel.png",
         alt: "Cosmos Sentinel, o Guardião Galáctico",
         descricao: "Este imponente guerreiro cibernético é a personificação da harmonia entre tecnologia avançada e energia cósmica. Empunhando o Cetro Estelar, Cosmos Sentinel pode manipular o espaço-tempo, anulando ataques e fortalecendo aliados.",

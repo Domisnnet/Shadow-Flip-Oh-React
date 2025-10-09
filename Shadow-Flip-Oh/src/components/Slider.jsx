@@ -1,6 +1,7 @@
+
 import React, { useState } from 'react';
-import Card from './Cards.jsx'; 
-import cardsData from '../data/cardsData.js'; 
+import Card from './Cards.jsx';
+import { cardsData } from '../data/cardsData'; // Importa os dados das cartas
 import Seta from '../assets/seta.png'; 
 
 function Slider() {

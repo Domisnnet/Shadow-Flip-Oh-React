@@ -1,5 +1,7 @@
 
 import React from 'react';
+
+// IMPORTAÇÃO DE IMAGENS (Direto de assets,para buscar a imagem correta)
 import cosmosSentinel from '../assets/cosmos-sentinel.png'; 
 import nebuladragon from '../assets/nebuladragon.png';
 import cyberbladePaladin from '../assets/cyberblade-paladin.png';
@@ -22,8 +24,8 @@ const cardImages = {
 function Card({ data, isSelected, isFlipped }) {
   const { nome, fundo, nivel, imagem, alt, descricao, atk, def } = data;
 
-  // Monta as classes CSS (classe de fundo + classe de seleção/virar)
-  const cardClasses = `cartao ${fundo} ${isSelected ? 'selecionado' : ''}`; // isFlipped não precisa aqui se for controlado na div interna
+   // Monta as classes CSS para o DIV interno
+  const cardClasses = `cartao ${fundo} ${isSelected ? 'selecionado' : ''}`; 
   const totalEstrelas = nivel;
   
   // Array de elementos <span> para as estrelas
@@ -31,18 +33,18 @@ function Card({ data, isSelected, isFlipped }) {
     <span key={index} className="estrela"></span>
   ));
   
-  // Obtém o caminho da imagem dinamicamente do mapeamento
+  // Obtém o caminho da imagem dinâmica
   const imageSrc = cardImages[imagem]; 
 
   return (
-    // Usa className em vez de class, conforme a sintaxe JSX
-    <li className="lista-personagens">
+    <li> 
+      {/* O DIV interno recebe as classes de estilo e de estado (selecionado, fundo) */}
       <div className={cardClasses}> 
         
-        {/* VERSO DA CARTA: Controlado pela propriedade isFlipped */}
+        {/* VERSO DA CARTA */}
         <div className={`carta-virada ${isFlipped ? 'mostrar-fundo-carta' : ''}`}></div>
 
-        {/* FRENTE DA CARTA */}
+        {/* FRENTE DA CARTA - H2 e DIVs */}
         <h2 className="nome">{nome}</h2>
 
         <div className="nivel-carta">
