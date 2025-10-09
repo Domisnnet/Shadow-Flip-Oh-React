@@ -1,45 +1,51 @@
-
+// src/components/Card.jsx
 import React from 'react';
 
-// Importa todas as imagens para que o Vite/Webpack as processe corretamente
+// IMPORTAÇÃO DE IMAGENS (Ajuste o caminho para a sua pasta de imagens)
+// Você deve importar todas as suas imagens aqui!
 import cosmosSentinel from '../imagens/cosmos-sentinel.png'; 
-// IMPORTANTE: Adicione as importações de TODAS as outras imagens aqui (nebuladragon, cyberblade, etc.)
-// Exemplo:
-// import nebuladragon from '../imagens/nebuladragon.png';
+import nebuladragon from '../imagens/nebuladragon.png';
+import cyberbladePaladin from '../imagens/cyberblade-paladin.png';
+import mechadragon from '../imagens/mechadragon.png';
+import archmage from '../imagens/archmage.png';
+import aegisKnight from '../imagens/aegis-knight.png';
+import stormbringer from '../imagens/stormbringer.png';
 
-// Um objeto para mapear o nome do arquivo para a variável importada.
-// Esta é uma técnica avançada, mas necessária no React/Vite.
+// Mapeamento de nome de arquivo para a variável importada.
 const cardImages = {
   'cosmos-sentinel.png': cosmosSentinel,
-  // 'nebuladragon.png': nebuladragon, // Adicione aqui
-  // ...
+  'nebuladragon.png': nebuladragon,
+  'cyberblade-paladin.png': cyberbladePaladin,
+  'mechadragon.png': mechadragon,
+  'archmage.png': archmage,
+  'aegis-knight.png': aegisKnight,
+  'stormbringer.png': stormbringer,
 };
 
 function Card({ data, isSelected, isFlipped }) {
   const { nome, fundo, nivel, imagem, alt, descricao, atk, def } = data;
 
-  // 1. Lógica de Classes Dinâmicas
-  const cardClasses = `cartao ${fundo} ${isSelected ? 'selecionado' : ''} ${isFlipped ? 'virar' : ''}`;
+  // Monta as classes CSS (classe de fundo + classe de seleção/virar)
+  const cardClasses = `cartao ${fundo} ${isSelected ? 'selecionado' : ''}`; // isFlipped não precisa aqui se for controlado na div interna
   const totalEstrelas = nivel;
-
-  // 2. Lógica para Estrelas (Nível)
+  
+  // Array de elementos <span> para as estrelas
   const estrelas = Array.from({ length: totalEstrelas }).map((_, index) => (
-    // 'key' é obrigatório no React para listas!
     <span key={index} className="estrela"></span>
   ));
   
-  // 3. Obtém o caminho da imagem dinâmica
+  // Obtém o caminho da imagem dinamicamente do mapeamento
   const imageSrc = cardImages[imagem]; 
 
   return (
+    // Usa className em vez de class, conforme a sintaxe JSX
     <li className="lista-personagens">
       <div className={cardClasses}> 
         
-        {/* VERSO DA CARTA (Lógica de virar a carta) */}
+        {/* VERSO DA CARTA: Controlado pela propriedade isFlipped */}
         <div className={`carta-virada ${isFlipped ? 'mostrar-fundo-carta' : ''}`}></div>
 
         {/* FRENTE DA CARTA */}
-        {/* Usamos className em vez de class, e o h2/p/div do seu HTML */}
         <h2 className="nome">{nome}</h2>
 
         <div className="nivel-carta">
