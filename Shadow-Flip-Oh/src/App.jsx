@@ -1,17 +1,19 @@
 // src/App.jsx
-import './css/reset.css';    // Importe seu reset.css
-import './css/estilos.css';  // Importe seu estilos.css
+
+// Importe TODOS os seus arquivos CSS globais aqui e na ORDEM correta:
+import './css/reset.css';      // 1. Reset (Remove margens padrão)
+import './css/fontes.css';     // 2. Fontes (Carrega a fonte "Yugioh")
+import './css/estilos.css';    // 3. Estilos Principais (body, cartao, slider, etc.)
+import './css/responsivo.css'; // 4. Responsivo (Media Queries)
+
+import Header from './components/Header';
 import Slider from './components/Slider';
 
 function App() {
   return (
-    // O body do seu HTML original (cabecalho e slider) vira o retorno do App
+    // O retorno do componente (Seus elementos estruturais)
     <> 
-      <header className="cabecalho">
-        <h1 className="titulo">Yu-Gi-Oh!</h1>
-      </header>
-      
-      {/* Aqui chamamos o Slider, que terá toda a interatividade */}
+      <Header />
       <Slider /> 
     </>
   )
