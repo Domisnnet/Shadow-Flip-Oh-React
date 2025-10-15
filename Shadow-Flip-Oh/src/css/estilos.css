@@ -35,8 +35,6 @@ body {
 	justify-content: center;
 	align-items: center;
 	color: #ffffff;
-	padding-top: 20px; 
-	padding-bottom: 20px;
 	font-size: 42px;
 }
 
@@ -159,7 +157,7 @@ body {
 }
 
 .btn-seta{
-    background-color: #ffffff;
+    background-color: #00f0ff;
     width: 70px;
     height: 70px;
     display: flex;
@@ -177,7 +175,7 @@ body {
 }
 
 .btn-seta:hover{
-    background-color: #8351fe;
+    box-shadow: 0 0 15px #00f0ff;
 }
 
 body::-webkit-scrollbar-track{
