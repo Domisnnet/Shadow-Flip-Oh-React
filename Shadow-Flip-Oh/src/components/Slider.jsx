@@ -1,8 +1,7 @@
-
 import React, { useState } from 'react';
 import Card from './Cards.jsx';
-import { cardsData } from '../data/cardsData'; // Importa os dados das cartas
-import Seta from '../assets/seta.png'; 
+import { cardsData } from '../data/cardsData'; 
+import { ChevronRightIcon } from '@heroicons/react/24/solid'; 
 
 function Slider() {
   // Estado para controlar o índice da carta atualmente visível
@@ -21,29 +20,31 @@ function Slider() {
 
   return (
     <main className="slider">
+      
       {/* Botão de Voltar */}
       <button className="btn-seta btn-voltar" onClick={handlePrev}>
-        <img src={Seta} alt="seta voltar" />
+        {/* 2. Usar o componente Heroicon, aplicando a classe CSS */}
+        <ChevronRightIcon className="icon-seta" />
       </button>
 
       {/* Lista de Personagens */}
       <ul className="lista-personagens">
-        {/* Renderiza todos os cards */}
         {cardsData.map((card, index) => (
           <Card 
             key={card.id} 
             data={card} 
-            // A carta está selecionada APENAS se seu índice for o índice atual
             isSelected={index === currentCardIndex}
-            isFlipped={false} // Mantemos como false por enquanto
+            isFlipped={false} 
           />
         ))}
       </ul>
 
       {/* Botão de Avançar */}
       <button className="btn-seta btn-avancar" onClick={handleNext}>
-        <img src={Seta} alt="seta avançar" />
+        {/* 3. Usar o mesmo componente Heroicon e classe CSS */}
+        <ChevronRightIcon className="icon-seta" />
       </button>
+      
     </main>
   );
 }
