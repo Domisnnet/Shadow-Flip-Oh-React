@@ -31,10 +31,11 @@ body {
 }
 
 .cabecalho .titulo {
+	color: #ffffff;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	color: #ffffff;
+	padding-top: 20px;
 	font-size: 42px;
 }
 
@@ -67,6 +68,7 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	padding-bottom: 50px; 
 	gap: 130px;
 }
 
