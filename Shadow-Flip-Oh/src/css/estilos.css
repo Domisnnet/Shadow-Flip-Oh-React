@@ -1,26 +1,25 @@
 /* 🌐 Estrutura Global */
 html, body {
-    height: 100%;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
 }
 
 body {
-    font-family: "Yugioh", serif;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(../assets/fundo-site.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    align-items: center;
-    justify-content: center;
+  font-family: "Yugioh", serif;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(../assets/fundo-site.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-/* 🧩 Componentes e Blocos */
+/* Estilização de Cabeçalho */
 .cabecalho {
     display: flex;
     justify-content: center;
@@ -34,152 +33,181 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-top: 20px;
+    padding-top: 30px;
+    padding-bottom: 20px;
     font-size: 42px;
 }
 
-.lista-personagens {
-    width: 300px;
-    height: 500px;
-    border-radius: 10px;
-    position: relative;
-    padding: 12px;
-}
-
+/* 🧩 Slider e Navegação */
 .slider {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-bottom: 50px;
-    gap: 130px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 50px;
+  gap: 130px;
 }
 
+.lista-personagens {
+  width: 300px;
+  height: 500px;
+  position: relative;
+}
+
+/* 🃏 Cartas */
 .cartao {
-    opacity: 0;
-    display: flex;
-    flex-direction: column;
-    padding: 12px 12px 10px;
-    gap: 5px;
-    position: absolute;
-    border-radius: 8px;
+  width: 300px;
+  height: 500px;
+  perspective: 1000px;
+  border-radius: 8px;
 }
 
-.cartao.selecionado {
-    opacity: 1;
-    z-index: 1;
+.card-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s ease-in-out;
 }
 
-.cartao.virar {
-    transform: rotatez(90deg);
-    transition: transform 0.3s ease-in-out;
+.card-inner.flipped {
+  transform: rotateY(180deg);
 }
 
-.cartao .nome {
-    font-size: 13px;
-    padding: 5px;
-    text-transform: uppercase;
-    background: radial-gradient(circle, #f3e2c8, #e4cfa5, #c4a57a);
-    border: 2px solid #a67c52;
-    border-radius: 8px;
-    color: #000000;
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 8px;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
-.cartao .estrela {
-    width: 20px;
-    height: 20px;
-    background-image: url(../assets/nivel-carta.png);
-    background-size: contain;
-    background-repeat: no-repeat;
-    display: inline-block;
+/* Frente da carta */
+.card-front {
+  background: radial-gradient(circle, #f3e2c8, #e4cfa5, #c4a57a);
+  border: 2px solid #a67c52;
+  padding: 12px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.cartao .nivel-carta {
-    display: flex;
-    justify-content: flex-end;
-    margin-right: 10px;
-    gap: 5px;
+.card-front .nome {
+  font-size: 13px;
+  padding: 5px;
+  text-transform: uppercase;
+  background: radial-gradient(circle, #f3e2c8, #e4cfa5, #c4a57a);
+  border: 2px solid #a67c52;
+  border-radius: 8px;
+  color: #000000;
 }
 
-.cartao .imagem-carta {
-    max-width: 260px;
-    align-self: center;
-    border-radius: 8px;
-    display: block;
+.card-front .nivel-carta {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 10px;
+  gap: 5px;
 }
 
-.cartao .informacoes {
-    border-radius: 8px;
-    max-width: 300px;
-    color: #000000;
-    background: radial-gradient(circle, #f3e2c8, #e4cfa5, #c4a57a);
-    border: 2px solid #a67c52;
-    text-align: left;
-    line-height: 1.5;
-    padding: 5px;
+.card-front .estrela {
+  width: 20px;
+  height: 20px;
+  background-image: url(../assets/nivel-carta.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  display: inline-block;
 }
 
-.cartao .informacoes .informacoes-ataque {
-    display: flex;
-    justify-content: flex-end;
-    gap: 5px;
-    padding: 10px;
+.card-front .imagem-carta {
+  max-width: 260px;
+  align-self: center;
+  border-radius: 8px;
+  display: block;
 }
 
-.cartao .informacoes .informacoes-ataque span {
-    font-size: 13px;
+.card-front .informacoes {
+  border-radius: 8px;
+  color: #000000;
+  background: radial-gradient(circle, #f3e2c8, #e4cfa5, #c4a57a);
+  border: 2px solid #a67c52;
+  text-align: left;
+  line-height: 1.5;
+  padding: 5px;
 }
 
-.cartao .informacoes .descricao {
-    border-bottom: 1px solid #000000;
-    padding: 10px;
-    max-height: 95px;
-    overflow-y: scroll;
-    font-size: 13px;
+.card-front .descricao {
+  border-bottom: 1px solid #000000;
+  padding: 10px;
+  max-height: 95px;
+  overflow-y: scroll;
+  font-size: 13px;
 }
 
-/* 🎨 Botões e Ícones */
+.card-front .informacoes-ataque {
+  display: flex;
+  justify-content: flex-end;
+  gap: 5px;
+  padding: 10px;
+}
+
+.card-front .informacoes-ataque span {
+  font-size: 13px;
+}
+
+/* Verso da carta */
+.card-back {
+  background: url(../assets/fundo-carta.jpg);
+  background-size: cover;
+  background-position: center;
+  transform: rotateY(180deg);
+}
+
+/* 🎨 Botões */
 .btn-seta {
-    background-color: rgba(0, 240, 255, 0.2);
-    width: 70px;
-    height: 70px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    border: 0;
-    cursor: pointer;
-    transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out, color 0.3s ease-in-out;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2),
-                inset 0 0 0 3px rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    position: relative;
-    z-index: 100;
+  background-color: rgba(0, 240, 255, 0.2);
+  width: 70px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 0;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out, color 0.3s ease-in-out;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2),
+              inset 0 0 0 3px rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  position: relative;
+  z-index: 100;
 }
 
 .btn-seta:hover {
-    background-color: rgba(0, 240, 255, 0.7);
-    box-shadow: 0 0 20px rgba(0, 240, 255, 0.8),
-                inset 0 0 0 3px rgba(255, 255, 255, 1);
+  background-color: rgba(0, 240, 255, 0.7);
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.8),
+              inset 0 0 0 3px rgba(255, 255, 255, 1);
 }
 
 .icon-seta {
-    color: white;
-    width: 40px;
-    height: 40px;
-    z-index: 2;
-    transition: color 0.3s ease-in-out;
+  color: white;
+  width: 40px;
+  height: 40px;
+  z-index: 2;
+  transition: color 0.3s ease-in-out;
 }
 
 .btn-seta:hover .icon-seta {
-    color: #000;
+  color: #000;
 }
 
 .btn-seta.btn-voltar .icon-seta {
-    transform: rotateY(180deg);
+  transform: rotateY(180deg);
 }
 
-/* 🖼️ Fundos e Temas */
+/* 🖼️ Fundos temáticos */
 .fundo-1 { background: url(../assets/fundo-1.jpg) no-repeat; }
 .fundo-2 { background: url(../assets/fundo-2.jpg) no-repeat; }
 .fundo-3 { background: url(../assets/fundo-3.jpg) no-repeat; }
@@ -188,42 +216,20 @@ body {
 .fundo-6 { background: url(../assets/fundo-6.jpg) no-repeat; }
 .fundo-7 { background: url(../assets/fundo-7.jpg) no-repeat; }
 
-.carta-virada {
-    display: none;
-    border-radius: 8px;
-}
-
-.carta-virada.mostrar-fundo-carta {
-    position: absolute;
-    display: block;
-    width: 100%;
-    height: 100%;
-    background: url(../assets/fundo-carta.jpg);
-    background-size: cover;
-    background-position: center;
-    top: 0;
-    left: 0;
-    z-index: 2;
-}
-
-/* 🧼 Utilitários e Scrollbar */
-.esconder {
-    display: none;
-}
-
+/* 🧼 Scrollbar */
 body::-webkit-scrollbar-track {
-    background-color: #c08057;
+  background-color: #c08057;
 }
 
 ::-webkit-scrollbar {
-    width: 10px;
+  width: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #c08057;
-    border-radius: 10px;
+  background: #c08057;
+  border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #c08057;
+  background: #c08057;
 }
