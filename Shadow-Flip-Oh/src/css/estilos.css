@@ -174,7 +174,7 @@ body {
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     position: relative; 
-    z-index: 1; 
+    z-index: 100; 
 }
 
 .icon-seta {
