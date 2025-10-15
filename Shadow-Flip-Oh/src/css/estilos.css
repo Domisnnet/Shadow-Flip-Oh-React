@@ -1,5 +1,6 @@
 /* 🌐 Estrutura Global */
-html, body {
+html,
+body {
   height: 100%;
   width: 100%;
   margin: 0;
@@ -15,30 +16,37 @@ body {
   background-position: center;
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
   align-items: center;
   justify-content: center;
 }
 
-/* Estilização de Cabeçalho */
+/* 🧩 Componentes e Blocos */
 .cabecalho {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
 }
 
 .cabecalho .titulo {
-    color: #ffffff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-top: 30px;
-    padding-bottom: 20px;
-    font-size: 42px;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20px;
+  font-size: 42px;
 }
 
-/* 🧩 Slider e Navegação */
+.lista-personagens {
+  width: 300px;
+  height: 500px;
+  border-radius: 10px;
+  position: relative;
+  padding: 12px;
+}
+
 .slider {
   display: flex;
   justify-content: center;
@@ -47,55 +55,27 @@ body {
   gap: 130px;
 }
 
-.lista-personagens {
-  width: 300px;
-  height: 500px;
-  position: relative;
-}
-
-/* 🃏 Cartas */
 .cartao {
-  width: 300px;
-  height: 500px;
-  perspective: 1000px;
-  border-radius: 8px;
-}
-
-.card-inner {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  transform-style: preserve-3d;
-  transition: transform 0.6s ease-in-out;
-}
-
-.card-inner.flipped {
-  transform: rotateY(180deg);
-}
-
-.card-front,
-.card-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-  border-radius: 8px;
-  box-sizing: border-box;
-  overflow: hidden;
-}
-
-/* Frente da carta */
-.card-front {
-  background: radial-gradient(circle, #f3e2c8, #e4cfa5, #c4a57a);
-  border: 2px solid #a67c52;
-  padding: 12px;
-  z-index: 2;
+  opacity: 0;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  padding: 12px 12px 10px;
+  gap: 5px;
+  position: absolute;
+  border-radius: 8px;
 }
 
-.card-front .nome {
+.cartao.selecionado {
+  opacity: 1;
+  z-index: 1;
+}
+
+.cartao.virar {
+  transform: rotatez(90deg);
+  transition: transform 0.3s ease-in-out;
+}
+
+.cartao .nome {
   font-size: 13px;
   padding: 5px;
   text-transform: uppercase;
@@ -105,14 +85,7 @@ body {
   color: #000000;
 }
 
-.card-front .nivel-carta {
-  display: flex;
-  justify-content: flex-end;
-  margin-right: 10px;
-  gap: 5px;
-}
-
-.card-front .estrela {
+.cartao .estrela {
   width: 20px;
   height: 20px;
   background-image: url(../assets/nivel-carta.png);
@@ -121,15 +94,23 @@ body {
   display: inline-block;
 }
 
-.card-front .imagem-carta {
+.cartao .nivel-carta {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 10px;
+  gap: 5px;
+}
+
+.cartao .imagem-carta {
   max-width: 260px;
   align-self: center;
   border-radius: 8px;
   display: block;
 }
 
-.card-front .informacoes {
+.cartao .informacoes {
   border-radius: 8px;
+  max-width: 300px;
   color: #000000;
   background: radial-gradient(circle, #f3e2c8, #e4cfa5, #c4a57a);
   border: 2px solid #a67c52;
@@ -138,7 +119,18 @@ body {
   padding: 5px;
 }
 
-.card-front .descricao {
+.cartao .informacoes .informacoes-ataque {
+  display: flex;
+  justify-content: flex-end;
+  gap: 5px;
+  padding: 10px;
+}
+
+.cartao .informacoes .informacoes-ataque span {
+  font-size: 13px;
+}
+
+.cartao .informacoes .descricao {
   border-bottom: 1px solid #000000;
   padding: 10px;
   max-height: 95px;
@@ -146,26 +138,7 @@ body {
   font-size: 13px;
 }
 
-.card-front .informacoes-ataque {
-  display: flex;
-  justify-content: flex-end;
-  gap: 5px;
-  padding: 10px;
-}
-
-.card-front .informacoes-ataque span {
-  font-size: 13px;
-}
-
-/* Verso da carta */
-.card-back {
-  background: url(../assets/fundo-carta.jpg);
-  background-size: cover;
-  background-position: center;
-  transform: rotateY(180deg);
-}
-
-/* 🎨 Botões */
+/* 🎨 Botões e Ícones */
 .btn-seta {
   background-color: rgba(0, 240, 255, 0.2);
   width: 70px;
@@ -177,8 +150,7 @@ body {
   border: 0;
   cursor: pointer;
   transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out, color 0.3s ease-in-out;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2),
-              inset 0 0 0 3px rgba(255, 255, 255, 0.8);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2), inset 0 0 0 3px rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
   position: relative;
@@ -187,8 +159,7 @@ body {
 
 .btn-seta:hover {
   background-color: rgba(0, 240, 255, 0.7);
-  box-shadow: 0 0 20px rgba(0, 240, 255, 0.8),
-              inset 0 0 0 3px rgba(255, 255, 255, 1);
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.8), inset 0 0 0 3px rgba(255, 255, 255, 1);
 }
 
 .icon-seta {
@@ -207,16 +178,66 @@ body {
   transform: rotateY(180deg);
 }
 
-/* 🖼️ Fundos temáticos */
-.fundo-1 { background: url(../assets/fundo-1.jpg) no-repeat; }
-.fundo-2 { background: url(../assets/fundo-2.jpg) no-repeat; }
-.fundo-3 { background: url(../assets/fundo-3.jpg) no-repeat; }
-.fundo-4 { background: url(../assets/fundo-4.jpg) no-repeat; }
-.fundo-5 { background: url(../assets/fundo-5.jpg) no-repeat; }
-.fundo-6 { background: url(../assets/fundo-6.jpg) no-repeat; }
-.fundo-7 { background: url(../assets/fundo-7.jpg) no-repeat; }
+/* 🖼️ Fundos e Temas */
+.fundo-1 {
+  background: url(../assets/fundo-1.jpg) no-repeat;
+}
 
-/* 🧼 Scrollbar */
+.fundo-2 {
+  background: url(../assets/fundo-2.jpg) no-repeat;
+}
+
+.fundo-3 {
+  background: url(../assets/fundo-3.jpg) no-repeat;
+}
+
+.fundo-4 {
+  background: url(../assets/fundo-4.jpg) no-repeat;
+}
+
+.fundo-5 {
+  background: url(../assets/fundo-5.jpg) no-repeat;
+}
+
+.fundo-6 {
+  background: url(../assets/fundo-6.jpg) no-repeat;
+}
+
+.fundo-7 {
+  background: url(../assets/fundo-7.jpg) no-repeat;
+}
+
+.carta-virada {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: url(../assets/fundo-carta.jpg);
+  background-size: cover;
+  background-position: center;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  border-radius: 8px;
+  backface-visibility: hidden;
+  transform: rotateY(0deg);
+  transition: transform 0.6s ease-in-out;
+}
+
+.carta-virada.mostrar-fundo-carta {
+  transform: rotateY(180deg);
+}
+
+.carta-virada {
+  visibility: hidden;
+  opacity: 0;
+  transition: transform 0.6s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+/* 🧼 Utilitários e Scrollbar */
+.esconder {
+  display: none;
+}
+
 body::-webkit-scrollbar-track {
   background-color: #c08057;
 }
