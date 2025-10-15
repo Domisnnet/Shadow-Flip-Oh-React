@@ -10,12 +10,12 @@ function Slider() {
 
   const handleNext = () => {
     setCurrentCardIndex((prevIndex) => (prevIndex + 1) % totalCards);
-    setIsFlipped(false);
+    setIsFlipped(false); // reseta flip ao trocar
   };
 
   const handlePrev = () => {
     setCurrentCardIndex((prevIndex) => (prevIndex - 1 + totalCards) % totalCards);
-    setIsFlipped(false);
+    setIsFlipped(false); // reseta flip ao trocar
   };
 
   const toggleFlip = () => setIsFlipped((prev) => !prev);
