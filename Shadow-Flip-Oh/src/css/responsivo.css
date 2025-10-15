@@ -20,19 +20,25 @@
 
     .slider {
         position: relative;
+        min-height: 80vh; 
     }
 
     .btn-seta {
         position: absolute;
-        bottom: -13%;
+        top: auto; 
+        transform: none; 
+        bottom: 20px; 
+        z-index: 100;
     }
 
-    #btn-avancar {
-        right: 20%;
+    .btn-seta.btn-voltar {
+        left: 25%; 
+        right: auto; 
     }
 
-    #btn-voltar {
-        left: 20%;
+    .btn-seta.btn-avancar {
+        left: auto; 
+        right: 25%; 
     }
 }
 
@@ -44,6 +50,7 @@
     }
 
     .cabecalho {
-        font-size: 12px;
+        font-size: 18px; 
+        margin-top: 5px;
     }
 }
