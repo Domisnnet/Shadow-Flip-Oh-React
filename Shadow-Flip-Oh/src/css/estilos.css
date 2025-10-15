@@ -1,163 +1,143 @@
-
+/* 🌐 Estrutura Global */
 html, body {
-    height: 100%; 
+    height: 100%;
     width: 100%;
     margin: 0;
     padding: 0;
-    overflow: hidden; 
+    overflow: hidden;
 }
 
 body {
     font-family: "Yugioh", serif;
-    background-image: url(../assets/fundo-site.jpg);
-    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), 
-                      url(../assets/fundo-site.jpg); 
+    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(../assets/fundo-site.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: center; 
+    background-position: center;
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
     min-height: 100vh;
-    align-items: center; 
+    align-items: center;
     justify-content: center;
 }
 
+/* 🧩 Componentes e Blocos */
 .cabecalho {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-	text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
 }
 
 .cabecalho .titulo {
-	color: #ffffff;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	padding-top: 20px;
-	font-size: 42px;
-}
-
-.cartao {
-	opacity: 0;
-	display: flex;
-	flex-direction: column;
-	padding: 12px;
-    gap: 5px;
-    position: absolute;
-	border-radius: 8px;
-	padding-bottom: 10px;
-	
-}
-
-.cartao.selecionado {
-	opacity: 1;
-    z-index: 1;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+    font-size: 42px;
 }
 
 .lista-personagens {
-	width: 300px;
-	height: 500px;
-	border-radius: 10px;
+    width: 300px;
+    height: 500px;
+    border-radius: 10px;
     position: relative;
-	padding: 12px;
+    padding: 12px;
 }
 
 .slider {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	padding-bottom: 50px; 
-	gap: 130px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 50px;
+    gap: 130px;
+}
+
+.cartao {
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 12px 12px 10px;
+    gap: 5px;
+    position: absolute;
+    border-radius: 8px;
+}
+
+.cartao.selecionado {
+    opacity: 1;
+    z-index: 1;
+}
+
+.cartao.virar {
+    transform: rotatez(90deg);
+    transition: transform 0.3s ease-in-out;
 }
 
 .cartao .nome {
-	font-size: 13px;
-	padding: 5px;
-	text-transform: uppercase;
-	background: radial-gradient(circle, #f3e2c8, #e4cfa5, #c4a57a);
-	border: 2px solid #a67c52;
-	border-radius: 8px;
-	color: #000000;
+    font-size: 13px;
+    padding: 5px;
+    text-transform: uppercase;
+    background: radial-gradient(circle, #f3e2c8, #e4cfa5, #c4a57a);
+    border: 2px solid #a67c52;
+    border-radius: 8px;
+    color: #000000;
 }
 
 .cartao .estrela {
-	width: 20px;
-	height: 20px;
-	background-image: url(../assets/nivel-carta.png);
-	background-size: contain;
-	background-repeat: no-repeat;
-	display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-image: url(../assets/nivel-carta.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: inline-block;
 }
 
 .cartao .nivel-carta {
-	display: flex;
-	justify-content: flex-end;
-	margin-right: 10px;
-	gap: 5px;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 10px;
+    gap: 5px;
 }
 
 .cartao .imagem-carta {
-	max-width: 260px;
-	align-self: center;
-	border-radius: 8px;
-	display: block;
+    max-width: 260px;
+    align-self: center;
+    border-radius: 8px;
+    display: block;
 }
 
 .cartao .informacoes {
-	border-radius: 8px;
-	max-width: 300px;
-	color: #000000;
-	background: radial-gradient(circle, #f3e2c8, #e4cfa5, #c4a57a);
-	border: 2px solid #a67c52;
-	text-align: left;
-	line-height: 1.5;
+    border-radius: 8px;
+    max-width: 300px;
+    color: #000000;
+    background: radial-gradient(circle, #f3e2c8, #e4cfa5, #c4a57a);
+    border: 2px solid #a67c52;
+    text-align: left;
+    line-height: 1.5;
     padding: 5px;
-	border-radius: 8px;
 }
 
 .cartao .informacoes .informacoes-ataque {
-	display: flex;
-	justify-content: flex-end;
-	gap: 5px;
-	padding: 10px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 5px;
+    padding: 10px;
 }
 
 .cartao .informacoes .informacoes-ataque span {
-	font-size: 13px;
+    font-size: 13px;
 }
 
 .cartao .informacoes .descricao {
-	border-bottom: 1px solid #000000;
-	padding: 10px;
-	max-height: 95px;
-	overflow-y: scroll;
-	font-size: 13px;
+    border-bottom: 1px solid #000000;
+    padding: 10px;
+    max-height: 95px;
+    overflow-y: scroll;
+    font-size: 13px;
 }
 
-.fundo-1 {
-	background: url(../assets/fundo-1.jpg) no-repeat;
-}
-.fundo-2 {
-	background: url(../assets/fundo-2.jpg) no-repeat;
-}
-.fundo-3 {
-	background: url(../assets/fundo-3.jpg) no-repeat;
-}
-.fundo-4 {
-	background: url(../assets/fundo-4.jpg) no-repeat;
-}
-.fundo-5 {
-	background: url(../assets/fundo-5.jpg) no-repeat;
-}
-.fundo-6 {
-	background: url(../assets/fundo-6.jpg) no-repeat;
-}
-.fundo-7 {
-	background: url(../assets/fundo-7.jpg) no-repeat;
-}
-
+/* 🎨 Botões e Ícones */
 .btn-seta {
     background-color: rgba(0, 240, 255, 0.2);
     width: 70px;
@@ -173,20 +153,8 @@ body {
                 inset 0 0 0 3px rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
-    position: relative; 
-    z-index: 100; 
-}
-
-.icon-seta {
-    color: white; 
-    width: 40px; 
-    height: 40px;
-    z-index: 2; 
-    transition: color 0.3s ease-in-out;
-}
-
-.btn-seta.btn-voltar .icon-seta {
-    transform: rotateY(180deg);
+    position: relative;
+    z-index: 100;
 }
 
 .btn-seta:hover {
@@ -195,11 +163,55 @@ body {
                 inset 0 0 0 3px rgba(255, 255, 255, 1);
 }
 
-.btn-seta:hover .icon-seta {
-    color: #000; 
+.icon-seta {
+    color: white;
+    width: 40px;
+    height: 40px;
+    z-index: 2;
+    transition: color 0.3s ease-in-out;
 }
 
-body::-webkit-scrollbar-track{
+.btn-seta:hover .icon-seta {
+    color: #000;
+}
+
+.btn-seta.btn-voltar .icon-seta {
+    transform: rotateY(180deg);
+}
+
+/* 🖼️ Fundos e Temas */
+.fundo-1 { background: url(../assets/fundo-1.jpg) no-repeat; }
+.fundo-2 { background: url(../assets/fundo-2.jpg) no-repeat; }
+.fundo-3 { background: url(../assets/fundo-3.jpg) no-repeat; }
+.fundo-4 { background: url(../assets/fundo-4.jpg) no-repeat; }
+.fundo-5 { background: url(../assets/fundo-5.jpg) no-repeat; }
+.fundo-6 { background: url(../assets/fundo-6.jpg) no-repeat; }
+.fundo-7 { background: url(../assets/fundo-7.jpg) no-repeat; }
+
+.carta-virada {
+    display: none;
+    border-radius: 8px;
+}
+
+.carta-virada.mostrar-fundo-carta {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: url(../assets/fundo-carta.jpg);
+    background-size: cover;
+    background-position: center;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+
+/* 🧼 Utilitários e Scrollbar */
+.esconder {
+    display: none;
+}
+
+body::-webkit-scrollbar-track {
     background-color: #c08057;
 }
 
@@ -214,31 +226,4 @@ body::-webkit-scrollbar-track{
 
 ::-webkit-scrollbar-thumb:hover {
     background: #c08057;
-}
-
-.carta-virada {
-	display: none;
-	border-radius: 8px;
-}
-
-.carta-virada.mostrar-fundo-carta {
-	position: absolute;
-	display: block;
-	width: 100%;
-	height: 100%;
-	background: url(../assets/fundo-carta.jpg);
-	background-size: cover;
-	background-position: center;
-	top: 0;
-	left: 0;
-	z-index: 2;
-}
-
-.cartao.virar {
-	transform: rotatez(90deg);
-	transition: transform 0.3s ease-in-out;
-}
-
-.esconder {
-	display: none;
 }
